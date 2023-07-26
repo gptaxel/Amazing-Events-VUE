@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
+    <title>Amazing Events | Stats </title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid ">
+            <a class="navbar-brand " href="#"><img class="img-logo" src="../images/amazing_brand.png" alt="logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="../../index.html">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./upcomingEvents.html">UPCOMING EVENTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./pastEvents.html">PAST EVENTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./contact.html">CONTACT</a>
+                    </li>
+                    <li class="nav-item active fw-bold">
+                        <a class="nav-link" href="#">STATS</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+
+        
+    </header>
+
+    <main>
+        <div class="container">
+
+            <!--Tabla Uno-->
+            <div id="app">
+                <div class="d-flex justify-content-center align-items-center my-5 flex-column gap-3">
+                    <table class="bg-danger text-light">
+                        <thead>
+                            <tr>
+                                <th colspan="3">Events Statics</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Events with highest % of assistence</td>
+                                <td>Events with lowest % of assistence</td>
+                                <td>Events with larger capacity</td>
+                            </tr>
+                            <tr>
+                                <td>{{nombreMayorAsistenciaPast}} {{mayorPorcentaje}}</td>
+                                <td> {{nombreMenorAsistenciaPast}} {{menorPorcentaje}}</td>
+                                <td>{{nombreMayorAsistencia}} {{eventoMayorCapacidad}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!--Tabla dos-->
+                    <table class="bg-danger text-light" id="tableCategoria2">
+                        <thead>
+                            <tr>
+                                <th colspan="3">Upcoming events statics by category</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Category</td>
+                                <td>Revenues</td>
+                                <td>Percentage of assitance</td>
+                            </tr>
+                            <template v-if="estadisticaUpcoming.length > 0" v-for="evento of estadisticaUpcoming">
+                                <tr>
+                                    <td>{{evento.nombreCategoria}}</td>
+                                    <td>{{evento.ganancias}}</td>
+                                    <td>{{evento.porcentajeAsistencia }}%</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+
+                    <!--Tabla tres-->
+                    <table class="bg-danger text-light">
+                        <thead>
+                            <tr>
+                                <th colspan="3">Past events statistics by category</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableCategoria">
+                            <tr>
+                                <td>Category</td>
+                                <td>Revenues</td>
+                                <td>Percentage of assitance</td>
+                            </tr>
+                            <template v-if="estadisticasPast.length > 0" v-for="evento of estadisticasPast">
+                                <tr>
+                                    <td>{{evento.nombreCategoria}}</td>
+                                    <td>{{evento.ganancias}}</td>
+                                    <td>{{evento.porcentajeAsistencia }}%</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class=" d-flex mb-3 border-top border-2 border-danger-subtle m-3">
+        <img class="p-2" src="../images/whatsapp.png" alt="whatsapp">
+        <img class="p-2" src="../images/instagram.png" alt="instagram">
+        <img class="p-2" src="../images/facebook.png" alt="facebook">
+        <h2 class="ms-auto p-2">COHORT 49</h2>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../scripts/stats.js"></script>
+</body>
+
+</html>

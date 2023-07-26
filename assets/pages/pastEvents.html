@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Amazing events,find a special event for you">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="../style/style.css">
+  <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
+  <title>Amazing Events | Past Events</title>
+</head>
+
+<body>
+  <div id="app">
+    <!--//Nav principal-->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary ">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="../images/amazing_brand.png" alt="logo" class="img-logo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav d-flex justify-content-end w-100">
+            <a class="nav-link" aria-current="page" href="../../index.html">HOME</a>
+            <a class="nav-link active fw-bold" href="#">PAST EVENTS</a>
+            <a class="nav-link" href="./upcomingEvents.html ">UPCOMING EVENTS</a>
+            <a class="nav-link" href="./contact.html">CONTACT</a>
+            <a class="nav-link" href="./stats.html">STATS</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!--Carousel-->
+    <div id="carouselExample" class="carousel slide position-relative">
+      <h1 class="position-absolute z-3 position-absolute top-50 start-50 translate-middle">Upcoming Events</h1>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="object-fit-cover border rounded" src="../images/optional_banner_4.jpg" class="d-block w-100"
+            alt="...">
+        </div>
+        <div class="carousel-item">
+          <img class="object-fit-cover border rounded" src="../images/optional_banner_5.jpg" class="d-block w-100"
+            alt="...">
+        </div>
+        <div class="carousel-item">
+          <img class="object-fit-cover border rounded" src="../images/optional_banner_3.jpg" class="d-block w-100"
+            alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+   
+    <main>
+       <!--Categories y search-->
+       {{filtrar}}
+      <div class="container-fluid d-lg-flex mt-2 justify-content-between">
+        <div class="d-lg-flex align-items-center gap-5 ms-2">
+          <template v-if="categorias.length > 0" v-for="categoria in categorias">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" v-bind:id="categoria"
+                v-bind:value="categoria" v-model="categoriaElegida">
+              <label class="form-check-label" v-bind:for="categoria">{{categoria}}</label>
+            </div>
+          </template>
+        </div>
+        <!--Solo Search-->
+        <nav class="navbar bg-body-tertiary ">
+          <div class="container-fluid">
+            <form class="d-flex" role="search">
+              <input class="form-control me-2 " type="search" aria-label="Search"
+                v-model="valorBusqueda">
+              <button class="btn btn-outline-danger" type="submit">Search</button>
+            </form>
+          </div>
+        </nav>
+      </div>
+      <!--Cards-Eventos-->
+      <div class=" container-fluid  mt-5 row m-0 justify-content-evenly gap-4">
+        <template v-if="eventosPasadosSeleccionado.length > 0" v-for="evento in eventosPasadosSeleccionado">
+          <article class="card col-5 p-0" style="width: 18rem;">
+            <img v-bind:src="evento.image" class="card-img-top" alt="food_fair">
+            <div class="card-body">
+              <h5 class="card-title">{{evento.name}}</h5>
+              <p class="card-text">{{evento.description}}
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <h6>{{evento.price}}USD</h6>
+                <a v-bind:href="'../pages/details.html?parametro=' + evento._id" class="btn btn-danger">Details</a>
+              </div>
+            </div>
+          </article>
+        </template>
+      </div>
+      <!--fin de id:app-->
+    </main>
+
+    <!--Footer-->
+    <footer class=" d-flex mb-3 border-top border-2 border-danger-subtle m-3">
+      <img class="p-2" src="../images/whatsapp.png" alt="whatsapp">
+      <img class="p-2" src="../images/instagram.png" alt="instagram">
+      <img class="p-2" src="../images/facebook.png" alt="facebook">
+      <h2 class="ms-auto p-2">COHORT 49</h2>
+  </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="../scripts/pastEvents.js"></script>
+
+</body>
+
+</html>
